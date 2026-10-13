@@ -1,3 +1,4 @@
+
 name: DevLaunch CI
 
 on:
@@ -11,7 +12,7 @@ permissions:
 
 jobs:
   validate-and-build:
-    name: Validate API and Helm chart
+    name: Build, validate, and scan
     runs-on: ubuntu-latest
 
     steps:
@@ -22,6 +23,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: ./apps/sample-api
+          load: true
           push: false
           tags: devlaunch/sample-api:ci
 
@@ -35,3 +37,13 @@ jobs:
 
       - name: Validate rendered Helm manifests
         run: helm template sample-api ./charts/sample-api --namespace devlaunch-dev
+
+      - name: Scan image with Trivy
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          image-ref: devlaunch/sample-api:ci
+          format: table
+          exit-code: '1'
+          ignore-unfixed: true
+          vuln-type: os,library
+          severity: CRITICAL,HIGH
