@@ -1,0 +1,21 @@
+# Local overrides and test configuration
+charts/sample-api/scale-test.yaml
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+*.tfstate
+*.tfstate.*
+.terraform/
+
+# IDE and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

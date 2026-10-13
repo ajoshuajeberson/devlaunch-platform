@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-api
+  namespace: devlaunch-dev
+  labels:
+    app: sample-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: sample-api
+  template:
+    metadata:
+      labels:
+        app: sample-api
+    spec:
+      containers:
+        - name: sample-api
+          image: devlaunch/sample-api:1.0.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8000
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 2
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 250m
+              memory: 128Mi

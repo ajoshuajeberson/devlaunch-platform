@@ -1,0 +1,22 @@
+replicaCount: 2
+
+image:
+  repository: devlaunch/sample-api
+  tag: "1.0.0"
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8000
+
+health:
+  path: /health
+
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 250m
+    memory: 128Mi
