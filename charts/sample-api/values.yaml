@@ -1,8 +1,8 @@
-replicaCount: 2
+﻿replicaCount: 2
 
 image:
-  repository: devlaunch/sample-api
-  tag: "1.0.0"
+  repository: ghcr.io/ajoshuajeberson/devlaunch-platform/sample-api
+  tag: "fa60fb784e47d786e8cd049bc9866c61d8d06d3b"
   pullPolicy: IfNotPresent
 
 service:
