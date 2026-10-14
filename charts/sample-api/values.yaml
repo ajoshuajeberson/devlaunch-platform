@@ -2,7 +2,7 @@
 
 image:
   repository: ghcr.io/ajoshuajeberson/devlaunch-platform/sample-api
-  tag: "fa60fb784e47d786e8cd049bc9866c61d8d06d3b"
+  tag: "3c9e523cc0968e3af3244c48385e51ff9d17f56c"
   pullPolicy: IfNotPresent
 
 service:
@@ -20,3 +20,4 @@ resources:
   limits:
     cpu: 250m
     memory: 128Mi
+
