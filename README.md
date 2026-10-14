@@ -15,25 +15,20 @@ Developer pushes code to GitHub
       - Scan image with Trivy
              |
              v
-       GitHub Container Registry
-       (GHCR, commit-SHA tags)
+      GitHub Container Registry
              |
              v
-       GitHub repository
-       (Helm chart and values)
+      Git repository (Helm chart)
              |
              v
            Argo CD
-       (automated sync and
-        self-healing enabled)
              |
              v
-       Kubernetes (kind)
+      Kubernetes (kind)
              |
              v
-        DevLaunch Sample API
+      DevLaunch Sample API
 ```
-
 ## Technology stack
 
 - **Application:** Python HTTP API
@@ -183,5 +178,10 @@ This is a local learning and portfolio environment, not a production-ready platf
 ## License
 
 No license has been added yet. Add one before explicitly permitting others to reuse or redistribute this project.
+
+
+
+
+
 
 
