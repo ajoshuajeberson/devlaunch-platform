@@ -19,6 +19,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run API unit tests
+        working-directory: ./apps/sample-api
+        run: python -m unittest discover -s tests -v
       - name: Build sample API image
         run: |
           docker build \
@@ -59,3 +66,5 @@ jobs:
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         run: |
           docker push ghcr.io/${{ github.repository }}/sample-api:${{ github.sha }}
+
+
